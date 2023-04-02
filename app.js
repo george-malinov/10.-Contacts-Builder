@@ -26,6 +26,13 @@ class Contact {
         return e
     }
 
+    eFactory(tag, content = '') {
+        const e = document.createElement(tag)
+        e.innerHTML = content
+
+        return e
+    }
+
     render(id) {
         this.templ = this.elementFactory('article')
         this.onlineDiv = this.elementFactory('div', `${this.firstName} ${this.lastName}`)
@@ -49,15 +56,15 @@ class Contact {
 
         this.infoBtn.addEventListener('click', () => {
             this.infoDiv.style.display = this.infoDiv.style.display === 'none' ? 'block' : 'none'
+            if (this.infoDiv.style.display === 'none') {
+                this.online = false
+            }
+            else (
+                this.online = true
+            )
         })
     }
-   
-    eFactory(tag, content = '') {
-        const e = document.createElement(tag)
-        e.innerHTML = content
 
-        return e
-    }
 }
 let contacts = [
     new Contact("Ivan", "Ivanov", "0888 123 456", "i.ivanov@gmail.com"),
